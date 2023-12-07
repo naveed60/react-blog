@@ -12,6 +12,9 @@ import Blog from "./components/Blog";
 import MyForm from "./components/Form";
 import Search from "./components/Search";
 import List from "./components/List";
+import  ApBar  from  "./components/ApBar";
+import PrimarySearchAppBar from "./components/ApBar";
+
 const App = () => {
 	const [searchTerm, setSearchTerm] = useState();
 	const handleSearch = (e) => {
@@ -28,43 +31,7 @@ const App = () => {
 			id:"2",
 			title:"React Js!",
 			content:"You have learn js first to Learning React "
-		},
-		{
-			id:"3",
-			title:"All World!",
-			content:"Learning React Js is cup of Tea",
-		},
-		{
-			id:"4",
-			title:"Good Guys!",
-			content:"Hi Students Learning React Js is Fun",
-		},
-		{
-			id:"5",
-			title:"Top Students!",
-			content:"You have learn js first to Learning React "
-		},
-		{
-			id:"6",
-			title:"Node Js!",
-			content:"Learning React Js is cup of Tea",
-		},
-		{
-			id:"7",
-			title:"Nest Js!",
-			content:"Hi Students Learning React Js is Fun",
-		},
-		{
-			id:"8",
-			title:"Next Js!",
-			content:"You have learn js first to Learning React "
-		},
-		{
-			id:"9",
-			title:"Mongo DB!",
-			content:"Learning React Js is cup of Tea",
 		}
-
 	]
 
 	const filterList = posts.filter((item) =>{
@@ -74,6 +41,7 @@ const App = () => {
 	
 	return (
 		<div className="App">
+			<PrimarySearchAppBar/>
 			<Greet name ="Naveed Ali" />
 			{/* <Greet profession ="Software Developer"/> */}
 			{/* <Message/> */}
