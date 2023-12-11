@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+/* TabButton.css */
+.tab-button {
+  padding: 10px;
+  margin: 2px;
+  background-color: #007BFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tab-button:hover {
+  background-color: #0056b3; /* Change color on hover */
+}
