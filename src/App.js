@@ -3,55 +3,66 @@ import { useState } from "react";
 import React from "react";
 import "./App.css";
 import Greet from "./components/Greet";
-import Message from "./components/Message";
-import { ClickHandler } from "./components/ClickHandler";
-import { Parent } from "./components/Parent";
-import Counter from "./components/Counter";
-import LoginControl from "./components/LoginControl";
-import Blog from "./components/Blog";
-import MyForm from "./components/Form";
-import Search from "./components/Search";
-import List from "./components/List";
-import  ApBar  from  "./components/ApBar";
 import PrimarySearchAppBar from "./components/ApBar";
+import  Card  from "./components/Card";
+import TabButton from "./components/TabButton";
+import UserLogin from "./components/UserLogin";
 
 const App = () => {
-	const [searchTerm, setSearchTerm] = useState();
-	const handleSearch = (e) => {
-		setSearchTerm(e.target.value);
+	const [selectedTopic, setSeletedTopic] = useState('Plese Click the button')
+	 function handleSelect(selectedButton){
+		setSeletedTopic(selectedButton);
+		console.log(selectedTopic);
 	}
+	const [user, setUser] = useState({
+    email: '',
+    password: '',
+    loggedIn: false,
+  });
 
-	const posts = [
-		{
-			id:"1",
-			title:"Javascript Guys!",
-			content:"Hi Students Learning React Js is Fun",
-		},
-		{
-			id:"2",
-			title:"React Js!",
-			content:"You have learn js first to Learning React "
-		}
-	]
-
-	const filterList = posts.filter((item) =>{
-	 return	item.title.toLowerCase().includes(searchTerm)
-	});
-
+	const handleLogin = () => {
+    // TODO: Update user object with dummy data
+    // Dummy data can be any non-empty strings for email and password, and loggedIn set to true
+    setUser({
+      email: 'dummy@example.com',
+      password: 'dummyPassword',
+      loggedIn: true,
+    });
+	}
+	
 	
 	return (
-		<div className="App">
+		<div className="App ">
 			<PrimarySearchAppBar/>
 			<Greet name ="Naveed Ali" />
-			{/* <Greet profession ="Software Developer"/> */}
-			{/* <Message/> */}
-			{/* <ClickHandler/> */}
-			{/* <Parent/>
-			<Counter/> */}
-			{/* <LoginControl/> */}
-			{/* <MyForm /> */}
-			<Search searchTerm={searchTerm} handleSearch={handleSearch}></Search>
-			<List list={filterList}></List>
+			<div className="container-fluid d-flex justify-content-center  vh-100">
+				<section>
+					<menu>
+						<TabButton onSelect={() => handleSelect('components')}>Components</TabButton>
+						<TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
+						<TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
+						<TabButton onSelect={() => handleSelect('state')}>State</TabButton>
+           {selectedTopic}
+					</menu>
+				</section>
+			</div>
+
+				
+		
+			<UserLogin user={user} onLogin={handleLogin} />
+				{/* Display user information */}
+				<div>
+					<h2>User Information</h2>
+					<p>Email: {user.email}</p>
+					<p>Password: {user.password}</p>
+					<p>Logged In: {user.loggedIn ? 'Yes' : 'No'}</p>
+				</div>
+			<div className="container-fluid d-flex justify-content-center align-items-center vh-100">
+				<Card/>
+				<Card/>
+				<Card/>
+				<Card/>
+			</div>
 		</div>
 	);
 };
