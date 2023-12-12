@@ -7,12 +7,21 @@ import PrimarySearchAppBar from "./components/ApBar";
 import  Card  from "./components/Card";
 import TabButton from "./components/TabButton";
 import UserLogin from "./components/UserLogin";
+import Discount from "./components/Discount";
+import { EXAMPLES } from "./data";
+import Card2 from "./components/Card2";
 
 const App = () => {
-	const [selectedTopic, setSeletedTopic] = useState('Plese Click the button')
+  const [discount, setDiscount]= useState('apply Discount')
+	function handleClick(discounted){
+		setDiscount(discounted);
+		console.log(discount);
+	}
+
+	const [selectedTopic, setSeletedTopic] = useState('components')
 	 function handleSelect(selectedButton){
 		setSeletedTopic(selectedButton);
-		console.log(selectedTopic);
+		console.log('app components executing');
 	}
 	const [user, setUser] = useState({
     email: '',
@@ -35,6 +44,7 @@ const App = () => {
 		<div className="App ">
 			<PrimarySearchAppBar/>
 			<Greet name ="Naveed Ali" />
+			<Discount price={()=> handleClick('75')}/>
 			<div className="container-fluid d-flex justify-content-center  vh-100">
 				<section>
 					<menu>
@@ -42,8 +52,19 @@ const App = () => {
 						<TabButton onSelect={() => handleSelect('jsx')}>JSX</TabButton>
 						<TabButton onSelect={() => handleSelect('props')}>Props</TabButton>
 						<TabButton onSelect={() => handleSelect('state')}>State</TabButton>
-           {selectedTopic}
+            {selectedTopic}
 					</menu>
+          <div id="tab-content"> 
+          
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>
+                {EXAMPLES[selectedTopic].code}
+              </code>
+            </pre>
+
+          </div>
 				</section>
 			</div>
 
