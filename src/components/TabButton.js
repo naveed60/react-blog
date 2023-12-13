@@ -1,6 +1,10 @@
-export default function TabButton({children, onSelect}){
-    return(
-      <button onClick={onSelect}className="tab-button" >{children}</button>
-    )
-
+export default function TabButton({ children, onSelect, isSelected }) {
+  console.log('TABBUTTON COMPONENT EXECUTING');
+  return (
+    <>
+      <button className={isSelected ? 'active' : undefined} onClick={onSelect}>
+        {children}
+      </button>
+    </>
+  );
 }
