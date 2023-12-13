@@ -1,15 +1,25 @@
-function Blog(props) {
-  const content = props.posts.map((post) => (
-    <div key={post.id}>
-      <ul>
-        <li>ID: {post.id}</li>
-        <li>Title: {post.title}</li>
-        <li>Content: {post.content}</li>
-      </ul>
-    </div>
-  ));
+import { useState } from 'react';
 
-  return <div>{content}</div>;
+export default function MyApp() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <h1>Counters that update together</h1>
+      <MyButton count={count} onClick={handleClick} />
+      <MyButton count={count} onClick={handleClick} />
+    </div>
+  );
 }
 
-export default Blog;
+function MyButton({ count, onClick }) {
+  return (
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
+  );
+}
