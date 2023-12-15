@@ -183,13 +183,13 @@ main h2 {
 }
 
 #examples menu button:hover {
-  background-color: #7925d3;
-  color: #ebe7ef;
+  background-color: #2e60f6;
+  color: #f2e9fb;
 }
 
 #examples menu button.active {
-  background-color: #7925d3;
-  color: #ebe7ef;
+  background-color: #264df7;
+  color: #f5f7b6f1;
 }
 
 #tab-content {
